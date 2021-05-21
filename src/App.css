@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+body {
+  font-family: Arial;
+}
+
+.loading {
+  padding-top: 15px;
+}
+
+@font-face {
+  font-family: 'valorant-font';
+  src: local('valorant-font'), url(./assets/fonts/Valorant-Font.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'bebas';
+  src: local('bebas'), url(./assets/fonts/BebasNeue-Regular.ttf) format('truetype');
+}

@@ -1,0 +1,35 @@
+.card-style {
+    margin-top: 20px;
+    max-width: 1000px;
+}
+
+.fill-button {
+    width: 100px;
+    background-color: #FF4654 !important;
+    outline: 0 !important;
+    border-color: #FF4654 !important;
+}
+
+.message {
+    background-color: #1B1E24;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 1px solid #2D3338;
+    padding: 10px;
+}
+
+.header-info {
+    font-family: "bebas";
+    font-size: 25px;
+}
+
+.role-info {
+    font-family: "bebas";
+    font-size: 17px;
+}
+
+.card:hover{
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+

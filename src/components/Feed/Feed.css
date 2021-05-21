@@ -1,0 +1,43 @@
+body {
+    background-color: #111823 !important;
+    /*background-image: url("/src/assets/background-image-3.jpg");*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: auto;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+
+  height: 80px;
+  line-height: 80px;  
+  width: 80px;  
+  font-size: 2em;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: #FF4654;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  border-style: none;
+  outline-style: none;
+}
+
+.fade-out{
+  opacity:0;
+  width:0;
+  height:0;
+  transition: width 0.25s 0.25s, height 0.25s 0.25s, opacity 0.25s;
+
+}
+.fade-in{
+  opacity:1;
+  width:80px;
+  height:80px;
+  transition: width 0.25s, height 0.25s, opacity 0.25s 0.25s;
+
+}
+
+

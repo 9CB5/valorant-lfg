@@ -10,7 +10,6 @@ body {
   position: fixed;
   right: 40px;
   bottom: 40px;
-
   height: 80px;
   line-height: 80px;  
   width: 80px;  
@@ -38,6 +37,27 @@ body {
   height:80px;
   transition: width 0.25s, height 0.25s, opacity 0.25s 0.25s;
 
+}
+
+.sort-and-filter {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  
+}
+
+.reset-button {
+  background-color: #FF4654 !important;
+  outline: 0 !important;
+  border-color: #FF4654 !important;
+  margin: 10px;
+}
+
+.filter-button {
+  background-color: #24446F !important;
+  outline: 0 !important;
+  border-color: #24446F !important;
+  margin: 10px;
 }
 
 

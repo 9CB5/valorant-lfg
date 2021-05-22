@@ -94,6 +94,70 @@ class App extends Component {
       })
   }
 
+  resetFilterHandler = () => {
+    // get groups from firestore database
+    this.ref
+      .orderBy('creationDate', 'desc')
+      .onSnapshot(
+      (querySnapshot) => {
+        const items = [];
+        querySnapshot.forEach(
+          (doc) => {
+            items.push(doc.data());
+          }
+        );
+        this.getYourGroupHandler();
+        this.setState({groups: items, isLoading: false});
+      }
+    );
+  }
+
+  sortAndFilterHandler = (sorter, roleFilter, regionFilter) => {
+
+    const order = (sorter === "" || sorter === "Latest") ? "desc" : "asc"; //desc = latest
+    const role = (roleFilter === "" || roleFilter === "Any") ? ["Controller", "Duelist", "Sentinel", "Initiator"] : [roleFilter]; 
+    const region = regionFilter;
+
+    if (region == "Any") {
+      // get groups from firestore database
+      this.ref
+      .where("availableRoles", "array-contains-any", role)
+      .orderBy('creationDate', order)
+      .onSnapshot(
+        (querySnapshot) => {
+          const items = [];
+          querySnapshot.forEach(
+            (doc) => {
+              items.push(doc.data());
+            }
+          );
+          this.getYourGroupHandler();
+          this.setState({groups: items, isLoading: false});
+        }
+      );
+    } else {
+      // get groups from firestore database
+      this.ref
+      .where("availableRoles", "array-contains-any", role)
+      .where("region", "==", region)
+      .orderBy('creationDate', order)
+      .onSnapshot(
+        (querySnapshot) => {
+          const items = [];
+          querySnapshot.forEach(
+            (doc) => {
+              items.push(doc.data());
+            }
+          );
+          this.getYourGroupHandler();
+          this.setState({groups: items, isLoading: false});
+        }
+      );
+    }
+
+    
+  }
+
   componentDidMount() {
 
     // get groups from firestore database
@@ -119,7 +183,7 @@ class App extends Component {
       <div className="App">
         <Header createGroup={this.createGroupHandler}/>
         {this.state.isLoading ? 
-          <div className="container">
+          <div className="container min-vh-100">
             <div className="row">
               <div className="col-12 text-center">
                 <Ring className="loading" size={150}/> 
@@ -131,7 +195,9 @@ class App extends Component {
             yourGroup={this.state.yourGroup}
             deleteGroup={this.deleteGroupHandler} 
             deleteMember={this.deleteMemberHandler}
-            fillRole={this.fillRoleHandler}/>
+            fillRole={this.fillRoleHandler}
+            sortAndFilter={this.sortAndFilterHandler}
+            resetFilter={this.resetFilterHandler}/>
         }
 
         <Footer/>

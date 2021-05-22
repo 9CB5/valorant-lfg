@@ -13,6 +13,20 @@ body {
   padding-top: 15px;
 }
 
+select {
+  background: #161B24 !important;
+  color:white !important;
+  min-width: 200px;
+}
+
+input[type="text"] {
+  background: #161B24 !important;
+}
+
+option:not(:checked) {
+  background-color: #161B24;
+}
+
 @font-face {
   font-family: 'valorant-font';
   src: local('valorant-font'), url(./assets/fonts/Valorant-Font.ttf) format('truetype');

@@ -85,16 +85,16 @@ export class YourGroup extends Component {
     getRoleImageHandler = (role) => {
         switch(role){
             case "Duelist":
-                return <img src={"/roles/duelist.png"} height="50px"/>
+                return <img className="your-role-image" src={"/roles/duelist.png"}/>
                 break;
             case "Initiator":
-                return <img src={"/roles/initiator.png"} height="50px"/>
+                return <img className="your-role-image" src={"/roles/initiator.png"}/>
                 break;
             case "Sentinel":
-                return <img src={"/roles/sentinel.png"} height="50px"/>
+                return <img className="your-role-image" src={"/roles/sentinel.png"}/>
                 break;
             case "Controller":
-                return <img src={"/roles/controller.png"} height="50px"/>
+                return <img className="your-role-image" src={"/roles/controller.png"}/>
                 break;
         }
     }
@@ -142,7 +142,7 @@ export class YourGroup extends Component {
         return (
             <div>
                 <Card className="bg-dark text-white card-style mx-auto">
-                <Card.Header style={{backgroundColor: "#202124", border: "1px solid #FF4654", borderLeft: this.getBorderColour()}}>
+                <Card.Header style={{backgroundColor: "#161B24", border: "1px solid #FF4654", borderLeft: this.getBorderColour()}}>
                     <div className="container">
                         <div className="row header-info">
                             <div className="col-6 text-left">
@@ -155,7 +155,7 @@ export class YourGroup extends Component {
                     </div>
 
                 </Card.Header>
-                <Card.Body style={{backgroundColor: "#202124",  border: "1px solid #FF4654"}}>
+                <Card.Body style={{backgroundColor: "#161B24",  border: "1px solid #FF4654"}}>
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-4 col-sm-6 col-6 pt-3">
@@ -164,7 +164,7 @@ export class YourGroup extends Component {
                                         {this.getRoleImageHandler(this.props.group.role1Type)} <br/>
                                         {this.props.group.role1Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 player-names my-auto">
                                         {this.props.group.role1Member} (You)
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@ export class YourGroup extends Component {
                                                 </div>
                                             </div>                                            
                                             : 
-                                            <Ellipsis/>
+                                            this.props.group.role2Type ? <Ellipsis/> : ''
                                         }
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@ export class YourGroup extends Component {
                                                 </div>
                                             </div>                                            
                                             : 
-                                            <Ellipsis/>
+                                            this.props.group.role3Type ? <Ellipsis/> : ''
                                         }
                                     </div>
                                 </div>
@@ -231,7 +231,7 @@ export class YourGroup extends Component {
                                                 </div>
                                             </div>                                            
                                             : 
-                                            <Ellipsis/>
+                                            this.props.group.role4Type ? <Ellipsis/> : ''
                                         }
                                     </div>
                                 </div>
@@ -254,7 +254,7 @@ export class YourGroup extends Component {
                                                 </div>
                                             </div>                                            
                                             : 
-                                            <Ellipsis/>
+                                            this.props.group.role5Type ? <Ellipsis/> : ''
                                         }
                                     </div>
                                 </div>
@@ -277,7 +277,7 @@ export class YourGroup extends Component {
                                                 </div>
                                             </div>                                            
                                             : 
-                                            <Ellipsis/>
+                                            this.props.group.role6Type ? <Ellipsis/> : ''
                                         }
                                     </div>
                                 </div>

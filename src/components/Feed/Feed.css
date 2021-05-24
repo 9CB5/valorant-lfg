@@ -60,4 +60,20 @@ body {
   margin: 10px;
 }
 
+@media screen and (max-width: 1320px) {
+  .sort-and-filter select{
+    min-width: 100px;
+  }
+} 
+
+@media screen and (max-width: 845px) {
+  .sort-and-filter{
+    display: inline-block;
+  }
+} 
+
+@media screen and (max-width: 608px) {
+  
+} 
+
 

@@ -119,6 +119,7 @@ class App extends Component {
     const region = regionFilter;
 
     if (region == "Any") {
+
       // get groups from firestore database
       this.ref
       .where("availableRoles", "array-contains-any", role)
@@ -136,7 +137,8 @@ class App extends Component {
         }
       );
     } else {
-      // get groups from firestore database
+
+      // set extra where query for region
       this.ref
       .where("availableRoles", "array-contains-any", role)
       .where("region", "==", region)
@@ -154,7 +156,6 @@ class App extends Component {
         }
       );
     }
-
     
   }
 

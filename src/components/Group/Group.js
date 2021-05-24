@@ -92,16 +92,16 @@ export class Group extends Component {
     getRoleImageHandler = (role) => {
         switch(role){
             case "Duelist":
-                return <img src={"/roles/duelist.png"} height="50px"/>
+                return <img className="role-image" src={"/roles/duelist.png"}/>
                 break;
             case "Initiator":
-                return <img src={"/roles/initiator.png"} height="50px"/>
+                return <img className="role-image" src={"/roles/initiator.png"}/>
                 break;
             case "Sentinel":
-                return <img src={"/roles/sentinel.png"} height="50px"/>
+                return <img className="role-image" src={"/roles/sentinel.png"}/>
                 break;
             case "Controller":
-                return <img src={"/roles/controller.png"} height="50px"/>
+                return <img className="role-image" src={"/roles/controller.png"}/>
                 break;
         }
     }
@@ -168,7 +168,7 @@ export class Group extends Component {
                             <div className="col-6 text-left">
                                 <span>{this.props.group.role1Member} | {this.getRankImageHandler(this.props.group.rank)} {this.props.group.rank}</span>
                             </div>
-                            <div className="col-6 text-right">
+                            <div className="col-6 text-right my-auto">
                                 <span>{this.props.group.region}</span>
                             </div>
                         </div>
@@ -184,7 +184,7 @@ export class Group extends Component {
                                         {this.getRoleImageHandler(this.props.group.role1Type)} <br/>
                                         {this.props.group.role1Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 role-user my-auto">
                                         {this.props.group.role1Member}
                                     </div>
                                 </div>
@@ -195,7 +195,7 @@ export class Group extends Component {
                                         {this.getRoleImageHandler(this.props.group.role2Type)} <br/>
                                         {this.props.group.role2Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 role-user my-auto">
                                         {this.props.group.role2Member ? this.props.group.role2Member : 
                                             this.props.group.role2Type ? 
                                             <Button 
@@ -213,7 +213,7 @@ export class Group extends Component {
                                         {this.getRoleImageHandler(this.props.group.role3Type)} <br/>
                                         {this.props.group.role3Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 role-user my-auto">
                                         {this.props.group.role3Member ? this.props.group.role3Member : 
                                             this.props.group.role3Type ? 
                                             <Button 
@@ -231,7 +231,7 @@ export class Group extends Component {
                                         {this.getRoleImageHandler(this.props.group.role4Type)} <br/>
                                         {this.props.group.role4Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 role-user my-auto">
                                         {this.props.group.role4Member ? this.props.group.role4Member : 
                                             this.props.group.role4Type ? 
                                             <Button 
@@ -249,7 +249,7 @@ export class Group extends Component {
                                         {this.getRoleImageHandler(this.props.group.role5Type)} <br/>
                                         {this.props.group.role5Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 role-user my-auto">
                                         {this.props.group.role5Member ? this.props.group.role5Member : 
                                             this.props.group.role5Type ? 
                                             <Button 
@@ -267,7 +267,7 @@ export class Group extends Component {
                                         {this.getRoleImageHandler(this.props.group.role6Type)} <br/>
                                         {this.props.group.role6Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 role-user my-auto">
                                         {this.props.group.role6Member ? this.props.group.role6Member : 
                                             this.props.group.role6Type ? 
                                             <Button 

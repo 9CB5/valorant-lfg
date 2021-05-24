@@ -1,6 +1,6 @@
 .banner-image {
 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/src/assets/banner-cropped.png");
-height: 35vh; /*35vh old config*/
+height: 400px; /*35vh old config*/
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;

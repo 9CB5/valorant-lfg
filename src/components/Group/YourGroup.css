@@ -1,5 +1,48 @@
 .player-names {
-    font-size: 13px;
+    font-size: 16px;
     padding: 0px;
 }
+
+.your-role-image {
+    height: 50px;
+}
+
+@media screen and (max-width: 845px) {
+    .your-role-image {
+        height: 30px;
+    }
+
+    .role-info {
+        font-size: 12px;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .player-names {
+        font-size: 12px;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .header-info {
+        font-size: 16px;
+    }
+
+    .fill-button {
+        width: auto;
+    }
+
+    .role-user {
+        font-size: 12px !important;
+    }
+
+    .message {
+        font-size: 12px;
+    }
+
+    .loading {
+        vertical-align: middle;
+        padding: 0 !important;
+    }
+} 
 

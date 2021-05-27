@@ -37,3 +37,18 @@ color: white;
     font-family: 'bebas';
     font-size: 25px;
 }
+
+.create-group-button {
+    background-color: #FF4654 !important;
+    outline: 0 !important;
+    border-color: #FF4654 !important;
+}
+
+.hidden {
+    display: none;
+}
+
+.inline-errormsg {
+    color: red !important;
+    font-size: 12px !important;
+}

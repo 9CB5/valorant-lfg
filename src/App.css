@@ -16,15 +16,15 @@ body {
 select {
   background: #161B24 !important;
   color:white !important;
-  min-width: 200px;
 }
 
 input[type="text"] {
   background: #161B24 !important;
+  color: white !important;
 }
 
-option:not(:checked) {
-  background-color: #161B24;
+select:disabled {
+  background: #ccc !important;
 }
 
 @font-face {

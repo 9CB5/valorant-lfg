@@ -47,6 +47,8 @@ class App extends Component {
           }
         );
     }
+
+    // maybe do a check here
   }
 
   // deletes the entire group
@@ -59,6 +61,28 @@ class App extends Component {
           localStorage.removeItem('yourGroup');
           this.setState({yourGroup: null});
         }
+      )
+  }
+
+  // leave group
+  leaveGroupHandler = (id) => {
+  
+    const role = localStorage.getItem("yourRole");
+    const type = localStorage.getItem("yourRoleType");
+
+    let updatedRoles = this.state.yourGroup.availableRoles;
+    updatedRoles.push(type);
+
+    this.setState({yourGroup: null});
+
+    this.ref
+      .doc(id)
+      .update({
+        [role]: '', 
+        availableRoles: updatedRoles
+      })
+      .then(
+          localStorage.clear()
       )
   }
 
@@ -92,6 +116,14 @@ class App extends Component {
         [role]: name,
         availableRoles: filteredRoles
       })
+      .then(
+        () => {
+          localStorage.setItem('yourGroup', id);
+          localStorage.setItem('yourRole', role);
+          localStorage.setItem('yourRoleType', type);
+          this.getYourGroupHandler();
+        }
+      )
   }
 
   resetFilterHandler = () => {
@@ -182,7 +214,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header createGroup={this.createGroupHandler}/>
+        <Header createGroup={this.createGroupHandler} 
+          yourGroup={this.state.yourGroup}
+        />
         {this.state.isLoading ? 
           <div className="container min-vh-100">
             <div className="row">
@@ -194,7 +228,8 @@ class App extends Component {
         : 
           <Feed groups={this.state.groups} 
             yourGroup={this.state.yourGroup}
-            deleteGroup={this.deleteGroupHandler} 
+            deleteGroup={this.deleteGroupHandler}
+            leaveGroup={this.leaveGroupHandler} 
             deleteMember={this.deleteMemberHandler}
             fillRole={this.fillRoleHandler}
             sortAndFilter={this.sortAndFilterHandler}

@@ -139,6 +139,9 @@ export class YourGroup extends Component {
     }
 
     render() {
+
+        const isJoinedMember = localStorage.getItem("yourRole") ? true : false;
+
         return (
             <div>
                 <Card className="bg-dark text-white card-style mx-auto">
@@ -149,7 +152,9 @@ export class YourGroup extends Component {
                                 <span> YOUR GROUP | {this.getRankImageHandler(this.props.group.rank)} {this.props.group.rank}</span>
                             </div>
                             <div className="col-6 text-right my-auto">
-                                <FaTimes onClick={this.props.deleteGroup.bind(this, this.props.group.id)}/>
+                                {isJoinedMember ? <FaTimes onClick={this.props.leaveGroup.bind(this, this.props.group.id)}/> : 
+                                    <FaTimes onClick={this.props.deleteGroup.bind(this, this.props.group.id)}/>
+                                }
                             </div>
                         </div>
                     </div>
@@ -175,13 +180,13 @@ export class YourGroup extends Component {
                                         {this.getRoleImageHandler(this.props.group.role2Type)} <br/>
                                         {this.props.group.role2Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 my-auto p-0">
                                         {this.props.group.role2Member ? 
                                             <div className="row">
                                                 <div className="col-6 player-names my-auto">
                                                     {this.props.group.role2Member}  
                                                 </div>
-                                                <div className="col-6 my-auto">
+                                                <div className={isJoinedMember ? "col-6 my-auto hide-button" : "col-6 my-auto"}>
                                                     <FaTimes size={20} color="red" onClick={this.props.deleteMember.bind(this, this.props.group.id, "role2Member", this.props.group.role2Type)}/>
                                                 </div>
                                             </div>                                            
@@ -197,13 +202,13 @@ export class YourGroup extends Component {
                                         {this.getRoleImageHandler(this.props.group.role3Type)} <br/>
                                         {this.props.group.role3Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 my-auto p-0">
                                         {this.props.group.role3Member ? 
                                             <div className="row">
                                                 <div className="col-6 player-names my-auto">
                                                     {this.props.group.role3Member}  
                                                 </div>
-                                                <div className="col-6 my-auto">
+                                                <div className={isJoinedMember ? "col-6 my-auto hide-button" : "col-6 my-auto"}>
                                                     <FaTimes size={20} color="red" onClick={this.props.deleteMember.bind(this, this.props.group.id, "role3Member", this.props.group.role3Type)}/>
                                                 </div>
                                             </div>                                            
@@ -219,13 +224,13 @@ export class YourGroup extends Component {
                                         {this.getRoleImageHandler(this.props.group.role4Type)} <br/>
                                         {this.props.group.role4Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 my-auto p-0">
                                         {this.props.group.role4Member ? 
                                             <div className="row">
                                                 <div className="col-6 player-names my-auto">
-                                                    {this.props.group.role2Member}  
+                                                    {this.props.group.role4Member}  
                                                 </div>
-                                                <div className="col-6 my-auto">
+                                                <div className={isJoinedMember ? "col-6 my-auto hide-button" : "col-6 my-auto"}>
                                                     <FaTimes size={20} color="red" 
                                                         onClick={this.props.deleteMember.bind(this, this.props.group.id, "role4Member", this.props.group.role4Type)}/>
                                                 </div>
@@ -242,13 +247,13 @@ export class YourGroup extends Component {
                                         {this.getRoleImageHandler(this.props.group.role5Type)} <br/>
                                         {this.props.group.role5Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 my-auto p-0">
                                         {this.props.group.role5Member ? 
                                             <div className="row">
                                                 <div className="col-6 player-names my-auto">
                                                     {this.props.group.role5Member}  
                                                 </div>
-                                                <div className="col-6 my-auto">
+                                                <div className={isJoinedMember ? "col-6 my-auto hide-button" : "col-6 my-auto"}>
                                                     <FaTimes size={20} color="red" 
                                                         onClick={this.props.deleteMember.bind(this, this.props.group.id, "role5Member", this.props.group.role5Type)}/>
                                                 </div>
@@ -265,13 +270,13 @@ export class YourGroup extends Component {
                                         {this.getRoleImageHandler(this.props.group.role6Type)} <br/>
                                         {this.props.group.role6Type}
                                     </div>
-                                    <div className="col-6 my-auto">
+                                    <div className="col-6 my-auto p-0">
                                         {this.props.group.role6Member ? 
                                             <div className="row">
                                                 <div className="col-6 player-names my-auto">
                                                     {this.props.group.role6Member}  
                                                 </div>
-                                                <div className="col-6 my-auto">
+                                                <div className={isJoinedMember ? "col-6 my-auto hide-button" : "col-6 my-auto"}>
                                                     <FaTimes size={20} color="red" 
                                                         onClick={this.props.deleteMember.bind(this, this.props.group.id, "role6Member", this.props.group.role6Type)}/>
                                                 </div>

@@ -1,10 +1,14 @@
 .player-names {
-    font-size: 16px;
+    font-size: 14px;
     padding: 0px;
 }
 
 .your-role-image {
     height: 50px;
+}
+
+.hide-button {
+    display: none;
 }
 
 @media screen and (max-width: 845px) {

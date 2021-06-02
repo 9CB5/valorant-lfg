@@ -10,9 +10,36 @@ export class Group extends Component {
         showFillModal: false,
         name: '',
         role: '',
-        type: ''
+        type: '',
+        errors: []
     }
 
+    submitFillHandler = () => {
+
+        let errors = [];
+
+        if (this.state.name === "" || this.state.name.length > 32) {
+            errors.push("username");
+        }
+
+        this.setState({errors: errors});
+
+        if (errors.length > 0) {
+            return false;
+        } else {
+            this.props.fillRole(this.state.name, this.props.group.id, this.state.role, this.state.type, this.props.group.availableRoles)
+            this.setState({
+                name: '',
+                rank: '',
+                region: '',
+                showFillModal: false
+            });
+        }
+      }
+
+    hasError(key) {
+    return this.state.errors.indexOf(key) !== -1;
+    }
 
     getRankImageHandler = (rank) => {
         switch(rank) {
@@ -159,6 +186,9 @@ export class Group extends Component {
     }
 
     render() {
+
+        const isJoinedMember = localStorage.getItem("yourGroup") ? true : false;
+
         return (
             <div>
             <Card className="bg-dark text-white card-style mx-auto">
@@ -201,6 +231,7 @@ export class Group extends Component {
                                             <Button 
                                                 className="fill-button"
                                                 onClick={() => this.modalToggleHandler("role2Member", this.props.group.role2Type)}
+                                                disabled={isJoinedMember}
                                             >
                                                 Fill
                                             </Button> : ''}
@@ -219,6 +250,7 @@ export class Group extends Component {
                                             <Button 
                                                 className="fill-button"
                                                 onClick={() => this.modalToggleHandler("role3Member", this.props.group.role3Type)}
+                                                disabled={isJoinedMember}
                                             >
                                                 Fill
                                             </Button>: ''}
@@ -237,6 +269,7 @@ export class Group extends Component {
                                             <Button 
                                                 className="fill-button"
                                                 onClick={() => this.modalToggleHandler("role4Member", this.props.group.role4Type)}
+                                                disabled={isJoinedMember}
                                             >
                                                 Fill
                                             </Button> : ''}
@@ -255,6 +288,7 @@ export class Group extends Component {
                                             <Button 
                                                 className="fill-button"
                                                 onClick={() => this.modalToggleHandler("role5Member", this.props.group.role5Type)}
+                                                disabled={isJoinedMember}
                                             >
                                                 Fill
                                             </Button> : ''}
@@ -273,6 +307,7 @@ export class Group extends Component {
                                             <Button 
                                                 className="fill-button"
                                                 onClick={() => this.modalToggleHandler("role6Member", this.props.group.role6Type)}
+                                                disabled={isJoinedMember}
                                             >
                                                 Fill
                                             </Button> : ''}
@@ -301,10 +336,13 @@ export class Group extends Component {
                 <Form onChange = {this.formChangeHandler}>
                     <Form.Group controlId="riotID">
                     <Form.Label>Riot ID</Form.Label>
-                    <Form.Control type="name" placeholder="Enter Riot ID" />
-                    <Form.Text className="text-muted">
-                      e.g. Chris#4449                        
-                    </Form.Text>
+                    <Form.Control
+                        className={this.hasError("username") ? "form-control is-invalid" : "form-control"} 
+                        type="name" 
+                        placeholder="Enter Riot ID" />
+                        <div className={this.hasError("username") ? "inline-errormsg" : "hidden"}>
+                        Please enter a valid username
+                        </div>
                     </Form.Group>
                     
                 </Form>
@@ -317,7 +355,7 @@ export class Group extends Component {
                 Close
             </Button>
             <Button variant="primary" 
-                onClick={this.props.fillRole.bind(this, this.state.name, this.props.group.id, this.state.role, this.state.type, this.props.group.availableRoles)}>
+                onClick={this.submitFillHandler}>
                 Fill
             </Button>
             </Modal.Footer>

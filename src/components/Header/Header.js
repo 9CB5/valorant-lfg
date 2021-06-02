@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Modal, Form, Row, Col} from 'react-bootstrap';
+import {Button, Modal, Form, Row, Col, Tooltip, OverlayTrigger} from 'react-bootstrap';
 import './Header.css';
 import down_arrow from '../../assets/down_arrow.gif';
 import { v4 as uuidv4 } from 'uuid';
@@ -10,6 +10,7 @@ class Header extends Component {
   state = {
     showCreateModal: false,
     errors: [],
+    disableCreateButton: false,
 
     // variables for new group
     name: '',
@@ -62,8 +63,6 @@ class Header extends Component {
 
   createGroupHandler = () => {
 
-    // need groupsize
-
     const availableRoles = [
       this.state.role2,
       this.state.role3,
@@ -74,7 +73,7 @@ class Header extends Component {
 
     let errors = [];
 
-    if (this.state.name === "") {
+    if (this.state.name === "" || this.state.name.length > 32) {
       errors.push("username");
     }
 
@@ -120,18 +119,44 @@ class Header extends Component {
   }
   
   render() {
+
+    let myRef = React.createRef();
+
+    const renderTooltip = (props) => (
+      <Tooltip id="button-tooltip" {...props}>
+        You already have a group created. 
+      </Tooltip>
+    );
+
     return (
       <div>
         <div className="banner-image">
           <div className="banner-text">
             <h1 style={{fontFamily:"valorant-font"}}>VaLFG</h1>
             <p className="motto">Build your squad</p>
-            <Button 
+
+            {this.props.yourGroup ? 
+              <OverlayTrigger
+                placement="right"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip}
+              >
+                <Button 
+                  variant="primary" 
+                  className="create-group-button-disabled"
+                > 
+                    <b>CREATE GROUP</b>
+                </Button>
+              </OverlayTrigger> : 
+              <Button 
               variant="primary" 
               className="create-group-button"
-              onClick={this.modalToggleHandler}> 
-                Create Group
-            </Button>
+              onClick={this.modalToggleHandler}
+              disabled={this.props.yourGroup != null ? true : false}> 
+                <b>CREATE GROUP</b>
+              </Button>
+            }     
+
             <p className="motto pt-2">OR</p>
             <p className="motto">JOIN A GROUP</p>
             <img src={down_arrow} height="40px"></img>
@@ -189,7 +214,7 @@ class Header extends Component {
                       <option>Iron 2</option>
                       <option>Iron 1</option>
                     </Form.Control>
-                    <div className={this.hasError("username") ? "inline-errormsg" : "hidden"}>
+                    <div className={this.hasError("rank") ? "inline-errormsg" : "hidden"}>
                       Please select a rank
                     </div>
                   </Form.Group>

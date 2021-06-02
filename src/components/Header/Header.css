@@ -44,6 +44,21 @@ color: white;
     border-color: #FF4654 !important;
 }
 
+.create-group-button-disabled {
+    background-color: #FF4654 !important;
+    outline: 0 !important;
+    border-color: #FF4654 !important;
+    opacity: 0.5;
+    cursor: none;
+}
+
+.create-group-button-disabled:focus,
+.create-group-button-disabled:active {
+    outline: none !important;
+    outline-offset: none !important;
+    box-shadow: none !important;
+}
+
 .hidden {
     display: none;
 }

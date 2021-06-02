@@ -98,7 +98,8 @@ class Feed extends Component {
                             <Button className="reset-button" onClick={this.resetFilterHandler}>Reset</Button>
                         </div>
 
-                        {this.props.yourGroup ? <YourGroup group={this.props.yourGroup} 
+                        {this.props.yourGroup ? <YourGroup group={this.props.yourGroup}
+                            leaveGroup={this.props.leaveGroup} 
                             deleteGroup={this.props.deleteGroup} 
                             deleteMember={this.props.deleteMember}/> : ''}
 
@@ -131,7 +132,7 @@ class Feed extends Component {
 
 export default Feed
 
-{/* {this.props.groups.map(
-    (g) => <Group key={g.id} group={g} fillRole={this.props.fillRole}/>
-)}                        */}
+/* {this.props.groups.map(
+    (g) => <Group key={g.id} goup={g} fillRole={this.props.fillRole}/>
+)}                        */
 

@@ -23,6 +23,11 @@ input[type="text"] {
   color: white !important;
 }
 
+input[type="name"] {
+  background: #161B24 !important;
+  color: white !important;
+}
+
 select:disabled {
   background: #ccc !important;
 }
